@@ -7,9 +7,7 @@ function hinhChuNhat(dai: number, rong: number) {
 }
 
 
-// =======================
 // Bài 2
-// =======================
 function tong(...numbers: number[]): number {
     let sum = 0;
     for (let i = 0; i < numbers.length; i++) {
@@ -20,7 +18,6 @@ function tong(...numbers: number[]): number {
 
 console.log("\nBài 2");
 console.log(tong(1, 2, 3, 4, 5));
-
 
 
 // Bài 3
