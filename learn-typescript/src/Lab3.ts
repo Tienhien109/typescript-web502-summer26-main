@@ -36,3 +36,25 @@ const createUser = (
 console.log("\nBai 3:");
 console.log(createUser("Hiền"));
 console.log(createUser("Hiền", 20, "admin"));
+//bai 4
+const mergeProducts = (
+    arr1: string[],
+    arr2: string[]
+
+): string[] => {
+    return [...arr1, ...arr2];
+}
+const printProducts = (products: string[]) => {
+    for (let product of products) {
+        console.log(product);
+}
+}
+
+
+const a = ["Iphone", "Samsung"];
+const b = ["huawei", "honda"];
+
+const listProducts = mergeProducts(a, b);
+
+console.log("\nBai 4:");
+printProducts(listProducts);  
