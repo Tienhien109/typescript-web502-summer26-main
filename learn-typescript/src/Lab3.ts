@@ -8,4 +8,7 @@ const averageScore = (scores: number[]): number => {
 }
 console.log(averageScore([8, 9, 10]));
 console.log(averageScore([5, 6, 7, 8]));
+console.log(averageScore([5, 6, 7, 8]));
+
+
 
