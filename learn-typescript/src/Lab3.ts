@@ -8,7 +8,16 @@ const averageScore = (scores: number[]): number => {
 }
 console.log(averageScore([8, 9, 10]));
 console.log(averageScore([5, 6, 7, 8]));
-console.log(averageScore([5, 6, 7, 8]));
+//bai 2
 
+const checkNumber = (num: number): string => {
+    if (num % 2 === 0) {
+        return "Even";
+    }
+    return "Odd";
+}
+console.log("\nBai 2:");
+console.log(checkNumber(4));
+console.log(checkNumber(7));
 
 
