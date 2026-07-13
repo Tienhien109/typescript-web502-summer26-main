@@ -20,4 +20,19 @@ console.log("\nBai 2:");
 console.log(checkNumber(4));
 console.log(checkNumber(7));
 
+//bai3
+const createUser = (
+    name: string,
+    age?: number,
+    role: string = "user"
+): string => {
 
+    if (age != undefined) {
+        return `Name: ${name}, Age: ${age}, Role: ${role}`;
+    }
+
+    return `Name: ${name}, Role: ${role}`;
+}
+console.log("\nBai 3:");
+console.log(createUser("Hiền"));
+console.log(createUser("Hiền", 20, "admin"));
