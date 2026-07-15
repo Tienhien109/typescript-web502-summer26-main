@@ -47,4 +47,10 @@ enum Role {
     USER = "user",
 }
 
+
 console.log(Role.USER);
+function showInfo<T>(data: T): T {
+    return data;
+}
+showInfo<number>(10);
+showInfo<string>("Hiennt");
