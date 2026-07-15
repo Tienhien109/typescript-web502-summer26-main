@@ -33,3 +33,23 @@ const user2: User = {
 };
 console.log(user1);
 console.log(user2);
+
+//bai3
+type Product = {
+    id: number;
+    name: string;
+    price: number;
+};
+
+const product1: Product = {
+    id: 1,
+    name: "Iphone",
+    price: 1000
+};
+const product2: Product = {
+    id: 3,
+    name: "oppo",
+    price: 500
+};
+console.log(product1);
+console.log(product2);
