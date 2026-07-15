@@ -53,3 +53,20 @@ const product2: Product = {
 };
 console.log(product1);
 console.log(product2);
+//bai4
+
+type status = "loading"| "success" | "error";
+function logStatus(status: status) {
+  if (status === "loading") {
+    console.log("Đang tải...");
+  } else if (status === "success") {
+    console.log("Thành công!");
+  } else {
+    console.log("Có lỗi xảy ra!");
+  }
+}
+logStatus("loading");
+logStatus("success");
+logStatus("error");
+
+
