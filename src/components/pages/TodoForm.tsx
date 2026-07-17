@@ -1,36 +1,43 @@
-import React, { FC, useState, FormEvent } from "react";
+import { FC, useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 type TodoFormProps = {
-    onAdd?: (title: string) => void;
+  addTodo: (title: string) => void;
 };
 
-const TodoForm: FC<TodoFormProps> = ({ onAdd }) => {
-    const [title, setTitle] = useState<string>("");
+const TodoForm: FC<TodoFormProps> = ({ addTodo }) => {
+  const [title, setTitle] = useState("");
+  const navigate = useNavigate();
 
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        const trimmed = title.trim();
-        if (!trimmed) return;
-        onAdd?.(trimmed);
-        setTitle("");
-    };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
-    return (
-        <div style={{ padding: 20 }}>
-            <h2>Thêm Todo</h2>
+    const trimmed = title.trim();
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Nhập công việc"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
+    if (!trimmed) return;
 
-                <button type="submit"> Thêm </button>
-            </form>
-        </div>
-    );
+    addTodo(trimmed);
+    setTitle("");
+
+    navigate("/");
+  };
+
+  return (
+    <div style={{ padding: 20 }}>
+      <h2>Thêm Todo</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Nhập công việc"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <button type="submit">Thêm</button>
+      </form>
+    </div>
+  );
 };
 
 export default TodoForm;
