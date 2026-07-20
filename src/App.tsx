@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TodoList from "./components/pages/TodoList";
 import { Todo } from "./components/pages/Todo";
+import MyState from "./components/MyState";
 
 function App() {
   const [todos] = useState<Todo[]>([
