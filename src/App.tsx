@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import TodoList from "./components/pages/TodoList";
 import { Todo } from "./components/pages/Todo";
+
+const TodoListComponent = TodoList as unknown as (props: {
+  todos: Todo[];
+}) => ReactElement;
 
 function App() {
   const [todos] = useState<Todo[]>([
