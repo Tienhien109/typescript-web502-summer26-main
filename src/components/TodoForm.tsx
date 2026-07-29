@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 interface FormData {
   title: string;
   description: string;
+  category: string;
+  completed: boolean;
 }
 
 function TodoForm() {
@@ -66,7 +68,16 @@ function TodoForm() {
             </p>
           )}
         </div>
-
+<div className="mb-4">
+  <label>
+    <input
+      type="checkbox"
+      {...register("completed")}
+      className="mr-2"
+    />
+    Hoàn thành
+  </label>
+</div>
         <div className="mb-4">
           <label className="block mb-1">Mô tả</label>
 

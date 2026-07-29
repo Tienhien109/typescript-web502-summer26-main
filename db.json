@@ -2,8 +2,9 @@
   "todos": [
     {
       "id": 2,
-      "title": "Học TypeScript",
-      "completed": true
+      "title": "Học sinh học",
+      "completed": true,
+      "description": "hine hien123123"
     },
     {
       "title": "ten cong viec",
@@ -14,11 +15,6 @@
       "title": "hhhhh",
       "description": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
       "id": 5
-    },
-    {
-      "title": "hhhhh",
-      "description": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
-      "id": 6
     },
     {
       "title": "cr7 cr7",

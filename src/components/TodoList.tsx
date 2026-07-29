@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 interface IToDoItem {
   id: number;
   title: string;
-  completed?: boolean;
+  description?: string;
+  completed: boolean;
 }
 
 export default function ToDoList() {
