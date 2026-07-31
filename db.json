@@ -1,25 +1,11 @@
 {
   "todos": [
     {
-      "id": 2,
-      "title": "Học khao sinh hoc",
-      "completed": false,
-      "description": "hine hien123123",
-      "category": "Công việc"
-    },
-    {
       "title": "hhhhh",
       "description": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
       "id": 5,
       "category": "Cá nhân",
       "completed": true
-    },
-    {
-      "title": "cr7 cr7",
-      "description": "hien hien124444444",
-      "id": 7,
-      "category": "Học tập",
-      "completed": false
     },
     {
       "title": "thiên sinh học",
@@ -34,6 +20,13 @@
       "completed": false,
       "description": "hhhhhhhhhiiashiausfiuasfhahsfa",
       "id": 9
+    },
+    {
+      "title": "hihiihihhi",
+      "category": "Công việc",
+      "completed": true,
+      "description": "hhhhhhhhhhhhhh",
+      "id": 10
     }
   ]
 }

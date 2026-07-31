@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 interface IToDoItem {
   id: number;
   title: string;
-  category?: string;
-  completed?: boolean;
+  description: string;
+  completed: boolean;
 }
 
 export default function ToDoList() {
@@ -16,57 +16,67 @@ export default function ToDoList() {
     loadTodos();
   }, []);
 
-  function loadTodos() {
-    axios.get("http://localhost:3000/todos").then((res) => {
+  async function loadTodos() {
+    try {
+      const res = await axios.get("http://localhost:3000/todos");
       setTodos(res.data);
-    });
-  }
-
-  function handleDelete(id: number) {
-    if (confirm("Bạn có muốn xóa không?")) {
-      axios.delete("http://localhost:3000/todos/" + id).then(() => {
-        loadTodos();
-      });
+    } catch (error) {
+      alert("mesagge");
     }
   }
 
+  async function handleDelete(id: number) {
+    if (!confirm("Xoas hay ko")) return;
+    await axios.delete("http://localhost:3000/todos/" + id);
+    loadTodos();
+  }
   return (
     <div>
-      <h2 className="text-3xl mb-4">Todo List</h2>
-
-      <table className="w-full border border-collapse">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2">Danh mục</th>
-            <th className="border p-2">ID</th>
-            <th className="border p-2">Title</th>
-            <th className="border p-2">Status</th>
-            <th className="border p-2">Action</th>
+      <h2>ToDoList</h2>
+      <table className="w-full border border-gray-300 rounded-lg">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="px-4 py-2 border border-gray-300 text-left">ID</th>
+            <th className="px-4 py-2 border border-gray-300 text-left">Name</th>
+            <th className="px-4 py-2 border border-gray-300 text-left">
+              Description
+            </th>
+            <th className="px-4 py-2 border border-gray-300 text-left">
+              Status
+            </th>
+            <th className="px-4 py-2 border border-gray-300 text-left">
+              Actions
+            </th>
           </tr>
         </thead>
 
         <tbody>
-          {todos.map((item) => (
-            <tr key={item.id}>
-              <td className="border p-2">{item.category}</td>
-              <td className="border p-2">{item.id}</td>
-              <td className="border p-2">{item.title}</td>
-              <td className="border p-2">
-                {item.completed ? "Hoàn thành" : "Chưa hoàn thành"}
+          {todos.map((item: IToDoItem) => (
+            <tr className="hover:bg-gray-50" key={item.id}>
+              <td className="px-4 py-2 border border-gray-300">{item.id}</td>
+              <td className="px-4 py-2 border border-gray-300">{item.title}</td>
+              <td className="px-4 py-2 border border-gray-300">
+                {item.description}
               </td>
-              <td className="border p-2">
-                <Link to={`/edit/${item.id}`}>
-                  <button className="bg-yellow-500 text-white px-3 py-1 rounded mr-2">
+              <td className="px-4 py-2 border border-gray-300">
+                {item.completed ? "Da hoan thanh" : "Chua hoan thanh"}
+              </td>
+              <td className="px-4 py-3 border border-gray-200">
+                <div className="flex items-center justify-center gap-2">
+                  <Link
+                    to={`/update/${item.id}`}
+                    className="inline-flex items-center rounded-lg bg-blue-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-600"
+                  >
                     Edit
-                  </button>
-                </Link>
+                  </Link>
 
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded"
-                >
-                  Delete
-                </button>
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="inline-flex items-center rounded-lg bg-red-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
