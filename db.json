@@ -2,24 +2,38 @@
   "todos": [
     {
       "id": 2,
-      "title": "Học sinh học",
-      "completed": true,
-      "description": "hine hien123123"
-    },
-    {
-      "title": "ten cong viec",
-      "description": "mo ta cong và việc",
-      "id": 4
+      "title": "Học khao sinh hoc",
+      "completed": false,
+      "description": "hine hien123123",
+      "category": "Công việc"
     },
     {
       "title": "hhhhh",
       "description": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
-      "id": 5
+      "id": 5,
+      "category": "Cá nhân",
+      "completed": true
     },
     {
       "title": "cr7 cr7",
       "description": "hien hien124444444",
-      "id": 7
+      "id": 7,
+      "category": "Học tập",
+      "completed": false
+    },
+    {
+      "title": "thiên sinh học",
+      "category": "Học tập",
+      "completed": true,
+      "description": "hihihihihihhihhi",
+      "id": 8
+    },
+    {
+      "title": "khao hoc cong nghe",
+      "category": "Công việc",
+      "completed": false,
+      "description": "hhhhhhhhhiiashiausfiuasfhahsfa",
+      "id": 9
     }
   ]
 }

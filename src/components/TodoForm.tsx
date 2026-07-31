@@ -23,22 +23,23 @@ function TodoForm() {
 
   useEffect(() => {
     if (id) {
-      axios
-        .get(`http://localhost:3000/todos/${id}`)
-        .then((res) => reset(res.data));
+      axios.get("http://localhost:3000/todos/" + id).then((res) => {
+        reset(res.data);
+      });
     }
-  }, [id, reset]);
+  }, []);
 
-  const submitForm = async (data: FormData) => {
+  function submitForm(data: FormData) {
     if (id) {
-      await axios.put(`http://localhost:3000/todos/${id}`, data);
+      axios.put("http://localhost:3000/todos/" + id, data).then(() => {
+        navigate("/list");
+      });
     } else {
-      await axios.post("http://localhost:3000/todos", data);
-      
+      axios.post("http://localhost:3000/todos", data).then(() => {
+        navigate("/list");
+      });
     }
-
-    navigate("/list");
-  };
+  }
 
   return (
     <div>
@@ -48,7 +49,7 @@ function TodoForm() {
 
       <form onSubmit={handleSubmit(submitForm)}>
         <div className="mb-4">
-          <label className="block mb-1">Title</label>
+          <label>Title</label>
 
           <input
             type="text"
@@ -63,23 +64,32 @@ function TodoForm() {
           />
 
           {errors.title && (
-            <p className="text-red-500 mt-1">
-              {errors.title.message}
-            </p>
+            <p className="text-red-500">{errors.title.message}</p>
           )}
         </div>
-<div className="mb-4">
-  <label>
-    <input
-      type="checkbox"
-      {...register("completed")}
-      className="mr-2"
-    />
-    Hoàn thành
-  </label>
-</div>
+
         <div className="mb-4">
-          <label className="block mb-1">Mô tả</label>
+          <label>Danh mục</label>
+
+          <select
+            className="w-full border rounded-lg px-3 py-2"
+            {...register("category")}
+          >
+            <option value="">-- Chọn danh mục --</option>
+            <option value="Học tập">Học tập</option>
+            <option value="Công việc">Công việc</option>
+            <option value="Cá nhân">Cá nhân</option>
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label>
+            <input type="checkbox" {...register("completed")} /> Hoàn thành
+          </label>
+        </div>
+
+        <div className="mb-4">
+          <label>Mô tả</label>
 
           <input
             type="text"

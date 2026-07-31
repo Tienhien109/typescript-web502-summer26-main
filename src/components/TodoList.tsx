@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 interface IToDoItem {
   id: number;
   title: string;
-  description?: string;
-  completed: boolean;
+  category?: string;
+  completed?: boolean;
 }
 
 export default function ToDoList() {
@@ -16,20 +16,18 @@ export default function ToDoList() {
     loadTodos();
   }, []);
 
-  async function loadTodos() {
-    try {
-      const res = await axios.get("http://localhost:3000/todos");
+  function loadTodos() {
+    axios.get("http://localhost:3000/todos").then((res) => {
       setTodos(res.data);
-    } catch (error) {
-      alert("Lỗi tải dữ liệu");
-    }
+    });
   }
 
-  async function handleDelete(id: number) {
-    if (!confirm("Xóa hay không?")) return;
-
-    await axios.delete("http://localhost:3000/todos/" + id);
-    loadTodos();
+  function handleDelete(id: number) {
+    if (confirm("Bạn có muốn xóa không?")) {
+      axios.delete("http://localhost:3000/todos/" + id).then(() => {
+        loadTodos();
+      });
+    }
   }
 
   return (
@@ -39,6 +37,7 @@ export default function ToDoList() {
       <table className="w-full border border-collapse">
         <thead>
           <tr className="bg-gray-200">
+            <th className="border p-2">Danh mục</th>
             <th className="border p-2">ID</th>
             <th className="border p-2">Title</th>
             <th className="border p-2">Status</th>
@@ -49,14 +48,12 @@ export default function ToDoList() {
         <tbody>
           {todos.map((item) => (
             <tr key={item.id}>
+              <td className="border p-2">{item.category}</td>
               <td className="border p-2">{item.id}</td>
-
               <td className="border p-2">{item.title}</td>
-
               <td className="border p-2">
                 {item.completed ? "Hoàn thành" : "Chưa hoàn thành"}
               </td>
-
               <td className="border p-2">
                 <Link to={`/edit/${item.id}`}>
                   <button className="bg-yellow-500 text-white px-3 py-1 rounded mr-2">
